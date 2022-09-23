@@ -4,10 +4,8 @@ import styles from '../styles/Home.module.css'
 import Horario from './Horario'
 import Localizacion from './Localizacion'
 import { useState, useEffect} from 'react'
-import {motion} from 'framer-motion'
 
-import {AiOutlineMenuUnfold} from 'react-icons/ai'
-import {AiOutlineMenuFold} from 'react-icons/ai'
+import NavBar from '../components/NavBar'
 
 
 export default function Home() {
@@ -19,10 +17,7 @@ export default function Home() {
   }
 
 
-  const navVariants = {
-    open:{top: 0},
-    closed:{top: "-20%"}
-  }
+
   
 
 
@@ -30,20 +25,7 @@ export default function Home() {
   return (
     <div className="container">
 
-      <motion.div
-        style={{
-          position:"fixed",
-          zIndex:10,
-          padding:"30px 0",
-        }} 
-        className="header"
-        variants={navVariants}
-        animate={openNav ? "open" : "closed"}
-        
-      >
-        <div style={{borderRadius:"100%", height: 20, width:20, background:"green", marginLeft:50}}></div>
-        {openNav ? <AiOutlineMenuUnfold/> : <AiOutlineMenuFold/>}
-      </motion.div>
+      <NavBar openNav={openNav}/>
 
       <h1 style={{margin: "100px 0 0", textAlign:"center"}}>Home Page</h1>
 
