@@ -27,9 +27,9 @@ export default function Widget(props){
 
         }
         else {
-            // scrollind down
+            // scrolling down
             toggleNav(false)
-            console.log("widget down", currentScroll)
+            
 
             
         }
@@ -37,7 +37,7 @@ export default function Widget(props){
 
     }, [toggleOpen])
 
-    function disableScroll() {
+    function disableWindowScroll() {
         // Get the current page scroll position
         let scrollTop = 
           window.pageYOffset || document.documentElement.scrollTop;
@@ -50,19 +50,19 @@ export default function Widget(props){
                 window.scrollTo(scrollLeft, scrollTop);
             };
     }
-    function enableScroll() {
-        window.onscroll = function() {};
+    function enableWindowScroll() {
+        window.onscroll = function() {}; // default is an empty function?
     }
 
     useEffect( () => {
 
         if(isOpen){
             element.addEventListener('scroll', handleScroll2);
-            disableScroll()
+            disableWindowScroll();
             
         } else {
             element?.removeEventListener('scroll', handleScroll2);
-            enableScroll()
+            enableWindowScroll();
 
         }
 
@@ -102,18 +102,7 @@ export default function Widget(props){
       }
 
     return (
-        <motion.div className="widget-cover"
-            style={{
-                // border: "2px solid red", 
-                height: "100%", 
-                width:"50%",
-                display: "flex",
-                justifyContent:"center",
-                alignItems:"center",
-            }}
-            
-            
-        >
+        <div className={styles.widgetCover}>
 
             <motion.div 
                 style={{ 
@@ -135,6 +124,6 @@ export default function Widget(props){
                 {children}
 
             </motion.div>
-        </motion.div>
+        </div>
     )
 }

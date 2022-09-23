@@ -4,16 +4,13 @@ import { useState, useEffect } from 'react'
 import {AiOutlineMenuUnfold} from 'react-icons/ai'
 import {AiOutlineMenuFold} from 'react-icons/ai'
 
+import styles from '../styles/Home.module.css'
+
+
 
 const MenuBar = () => {
 
   const [openMenu, setOpenMenu] = useState(false)
-  
-
-  useEffect(()=>{
-    console.log(openMenu)
-  }, [openMenu])
-
   
   const menuVariants = {
     open:{
@@ -31,16 +28,17 @@ const MenuBar = () => {
     },
     closed:{
       
-      left: -50
+      left: -70
     }
   }
 
   return (
     <motion.div 
       style={{
-        background: "coral",
+        background: "white",
         height: "100vh",
         width: "70vw",
+        borderLeft: "2px solid red",
         top: 0,
 
       }}
@@ -51,19 +49,13 @@ const MenuBar = () => {
     >
 
       <motion.div
-        style={{
-          position: "absolute",
-          // border:"2px solid blue",
-          width:"fit-content",
-          fontSize: 30,
-          marginTop:20,
-        }}
+        className={styles.icon}
         variants={burgerVariants}
         animate={openMenu ? "open":"closed"}
       >
 
         {openMenu ? 
-          <AiOutlineMenuUnfold onClick={ ()=> setOpenMenu(openMenu => !openMenu) }/> 
+          <AiOutlineMenuUnfold  onClick={ ()=> setOpenMenu(openMenu => !openMenu) }/> 
           : 
           <AiOutlineMenuFold onClick={ ()=> setOpenMenu(openMenu => !openMenu) }/>
         }

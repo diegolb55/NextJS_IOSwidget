@@ -1,5 +1,4 @@
 
-import styles from '../styles/Home.module.css'
 
 import Horario from './Horario'
 import Localizacion from './Localizacion'
@@ -29,16 +28,18 @@ export default function Home() {
 
       <h1 style={{margin: "100px 0 0", textAlign:"center"}}>Home Page</h1>
 
-      <div style={{border: "2px solid pink", height: 1000, width: "70vw", margin:"20px auto"}}></div>
+      <div style={{ height: 1000, width: "70vw", margin:"20px auto", background:"#414a4c", boxShadow:"inset 5px 0px 12px 2px black"}}></div>
 
       <div className="widgetholder">
         <Horario toggleNav={toggleNav}/>
         <Localizacion toggleNav={toggleNav}/>
       </div>
       <div className="widgetholder">
-        <Horario toggleNav={toggleNav}/>
         <Localizacion toggleNav={toggleNav}/>
+        <Horario toggleNav={toggleNav}/>
+
       </div>
+      
         
         
       

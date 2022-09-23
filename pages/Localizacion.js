@@ -8,25 +8,39 @@ export default function Localizacion({toggleNav}){
     const [isOpen, setIsOpen] = useState(false);
 
     const wTitle = {
-        open:{margin: "80px auto", textAlign:"center"},
-        closed:{margin: 0, textAlign:"auto"},
+        open:{
+            margin:"150px auto 30px auto ",
+            padding: 0,
+
+        },
+        closed:{
+            margin: "0 0 0 0",
+            padding:"0 0 0 20px",
+            
+        },
     }
 
 
     return (
         <Widget 
             height={150} 
-            width={150} 
+            width={180} 
             isOpen={isOpen} 
             toggleOpen={ () => setIsOpen(!isOpen)} 
             toggleNav={toggleNav}
             color="lightgray">
 
             <motion.h2 
-                // style={{padding: 10}}
+                style={{ 
+                    // width:"fit-content", 
+                    // position: "relative", 
+                    // border:"2px solid white",
+                    width:"fit-content",
+                    position: "relative"
+                }}
                 variants={wTitle}
                 animate={isOpen ? "open" : "closed"}
-                transition={{type:"tween"}}
+                transition={{type:"tween", duration:.4}}
             >Direccion</motion.h2>
 
         
