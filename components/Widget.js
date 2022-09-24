@@ -8,51 +8,35 @@ export default function Widget(props){
 
     const {height, width, isOpen,color, toggleOpen, toggleNav, children} = props;
 
+    /**
+     *  ref used to get scroll top position of 
+     *  scrollable-yth widget (div)
+     */
     const ref = useRef(null);
-
-    const element = ref.current;
-    let prevScroll = element?.scrollTop;
+    const element = ref.current; // null on first render
+    let prevScroll = element?.scrollTop; 
 
     const handleScroll2 = useCallback((event) => {
         event.preventDefault();
-        event.stopPropagation(); // widget scroll event
+        event.stopPropagation(); // event : widget scroll event
         
-
         let currentScroll = element?.scrollTop;
+        let deltaY = currentScroll - prevScroll;      
 
-        if( prevScroll > currentScroll){
-            // scrolling up
-            toggleNav(true)
-            console.log("widget up", currentScroll)
-
-        }
-        else {
-            // scrolling down
-            toggleNav(false)
-            
-
+        if( deltaY < -6) {  // scrolling up
+            // show nav
+            toggleNav(true);
             
         }
-        prevScroll = currentScroll;
+        else if(deltaY > 6){ // scrolling down 
+            // hide nav
+            toggleNav(false);
+            
+        }
 
-    }, [toggleOpen])
+        prevScroll = currentScroll; 
 
-    function disableWindowScroll() {
-        // Get the current page scroll position
-        let scrollTop = 
-          window.pageYOffset || document.documentElement.scrollTop;
-        let scrollLeft = 
-          window.pageXOffset || document.documentElement.scrollLeft;
-    
-            // if any scroll is attempted,
-            // set this to the previous value
-            window.onscroll = function() {
-                window.scrollTo(scrollLeft, scrollTop);
-            };
-    }
-    function enableWindowScroll() {
-        window.onscroll = function() {}; // default is an empty function?
-    }
+    }, [toggleOpen]);
 
     useEffect( () => {
 
@@ -66,15 +50,29 @@ export default function Widget(props){
 
         }
 
-        return () => {
-            element?.removeEventListener('scroll', handleScroll2)
+        return () => { // cleanup function
+            element?.removeEventListener('scroll', handleScroll2);
             
         } 
 
-    }, [isOpen])
+    }, [isOpen]);
+
+    function disableWindowScroll() {
+        // Get the current window scroll position
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+       
+        // if any scroll is attempted,
+        // set this to the previous value
+        window.onscroll = function() {
+            window.scrollTo(0, scrollTop);
+        }
+    };
+    function enableWindowScroll() {
+        window.onscroll = function() {}; // default is an empty function?
+    }
     
 
-    const variants1 = {
+    const widgetVar = {
         open: { 
             height:  "100vh", 
             width: "100vw", 
@@ -84,7 +82,6 @@ export default function Widget(props){
             zIndex: 2, 
             borderRadius: 0, 
             overflow: "scroll",
-            // padding: 0,
         },
         closed: { 
             height: height, 
@@ -94,25 +91,31 @@ export default function Widget(props){
             left: "auto",
             zIndex:  1, 
             borderRadius: 25,
-            overflow: "hidden",
-            // padding: "20px 25px",
-             
+            overflow: "hidden",             
         },
         
       }
 
     return (
+        /**
+         * widgetCover : holds the widget flex-centered. 
+         *      currently taking 50% width and 100% height
+         *      of its parent container (widgetholder).
+         */
         <div className={styles.widgetCover}>
-
+            {/* 
+                actualWidget : the real colored widget.
+            */}
             <motion.div 
-                style={{ 
-                    scrollBehavior: "smooth", background: color,
-                    
-                }}
                 ref={ref}
                 className={styles.actualWidget}
 
-                variants={variants1}
+                style={{ 
+                    scrollBehavior: "smooth", 
+                    background: color,  
+                }}
+
+                variants={widgetVar}
                 animate={isOpen ? "open" : "closed"}
                 transition={{ type: "spring", duration: .5}}
                 onClick={ () => {

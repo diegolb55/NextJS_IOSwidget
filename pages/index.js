@@ -26,10 +26,13 @@ export default function Home() {
 
       <NavBar openNav={openNav}/>
 
+      {/* Landing page heading */}
       <h1 style={{margin: "100px 0 0", textAlign:"center"}}>Home Page</h1>
 
+      {/* black rectangle */}
       <div style={{ height: 1000, width: "70vw", margin:"20px auto", background:"#414a4c", boxShadow:"inset 5px 0px 12px 2px black"}}></div>
 
+      {/* Two flex widgetholders */}
       <div className="widgetholder">
         <Horario toggleNav={toggleNav}/>
         <Localizacion toggleNav={toggleNav}/>

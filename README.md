@@ -1,7 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 
 ## Description
-A Next.js web app that tries to simulate ios app widgets using framer motion animation and event handling.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) that tries to simulate ios app widgets using framer motion animation and react event handling.
+
+.
 ## Getting Started
 
 First, run the development server:

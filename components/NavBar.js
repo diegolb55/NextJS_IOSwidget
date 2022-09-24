@@ -12,6 +12,7 @@ const MenuBar = () => {
 
   const [openMenu, setOpenMenu] = useState(false)
   
+  // variants that open/close the menu bar
   const menuVariants = {
     open:{
       right: 0,
@@ -22,6 +23,7 @@ const MenuBar = () => {
       right: "-70vw",
     }
   }
+  // variants that move horizontal of menu burger
   const burgerVariants = {
     open:{
       left: 20
@@ -34,14 +36,8 @@ const MenuBar = () => {
 
   return (
     <motion.div 
-      style={{
-        background: "white",
-        height: "100vh",
-        width: "70vw",
-        borderLeft: "2px solid red",
-        top: 0,
-
-      }}
+      
+      className={styles.menubar}
       variants={menuVariants}
       animate={openMenu ? "open" : "closed"}
       transition={{ type: "tween", stiffness: 10 }}
@@ -49,7 +45,7 @@ const MenuBar = () => {
     >
 
       <motion.div
-        className={styles.icon}
+        className={styles.menuburger}
         variants={burgerVariants}
         animate={openMenu ? "open":"closed"}
       >
@@ -61,7 +57,6 @@ const MenuBar = () => {
         }
 
       </motion.div>
-      <div></div>
       
     </motion.div>
   )
@@ -76,17 +71,13 @@ export default function NavBar({openNav}){
 
     return (
       <motion.div
-        style={{
-          position:"fixed",
-          zIndex:10,
-          padding:"30px 0",
-        }} 
-        className="header"
+       
+        className={styles.navbar}
         variants={navVariants}
         animate={openNav ? "open" : "closed"}
         
       >
-        <div style={{borderRadius:"100%", height: 20, width:20, background:"green", marginLeft:50}}></div>
+        <div className={styles.logo}></div>
         
         <MenuBar />
 

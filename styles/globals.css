@@ -12,12 +12,12 @@ body::-webkit-scrollbar {
   display: none;
 
 }
-.container::-webkit-scrollbar {
+/* .container::-webkit-scrollbar {
   width: 0px !important;
   background: transparent;
   display: none;
 
-}
+} */
 
 
 
@@ -41,13 +41,7 @@ body::-webkit-scrollbar {
 .container{
   scroll-behavior:smooth;
 }
-.header {
-  border-bottom: 2px solid coral;
-  background: white;
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-}
+
 
 /* widget */
 

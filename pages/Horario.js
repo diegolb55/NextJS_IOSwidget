@@ -40,6 +40,7 @@ export default function Horario({toggleNav}){
                 transition={{type:"tween", duration:.4}}
             >Horario</motion.h2>
 
+            {/* Widget closed content */}
             <AnimatePresence>
                 {!isOpen && (
                     <motion.div 
@@ -57,7 +58,7 @@ export default function Horario({toggleNav}){
             </AnimatePresence>
 
             
-
+            {/* Widget open content */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div 
