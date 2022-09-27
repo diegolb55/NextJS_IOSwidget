@@ -8,7 +8,7 @@ import styles from '../styles/Home.module.css'
 
 
 
-const MenuBar = () => {
+const MenuBar = ({logRef}) => {
 
   const [openMenu, setOpenMenu] = useState(false)
   
@@ -56,13 +56,19 @@ const MenuBar = () => {
           <AiOutlineMenuFold onClick={ ()=> setOpenMenu(openMenu => !openMenu) }/>
         }
 
+        
+
       </motion.div>
+      <h3 style={{
+        marginLeft:100
+      }}
+      onClick={ ()=> logRef() }>horario</h3>
       
     </motion.div>
   )
 }
 
-export default function NavBar({openNav}){
+export default function NavBar({openNav, setOpenWidget, logRef}){
 
     const navVariants = {
         open:{top: 0},
@@ -77,9 +83,11 @@ export default function NavBar({openNav}){
         animate={openNav ? "open" : "closed"}
         
       >
-        <div className={styles.logo}></div>
+        <div className={styles.logo}
+          onClick={ () => setOpenWidget(b => !b)}
+        ></div>
         
-        <MenuBar />
+        <MenuBar logRef={logRef}/>
 
       </motion.div>
     )
