@@ -6,12 +6,12 @@ import styles from '../styles/Home.module.css'
 
 export default function Widget(props){
 
-    const {height, width, isOpen,color, toggleOpen, toggleNav, children} = props;
+    const {height, width, isOpen, color, toggleOpen, toggleNav, children} = props;
 
     /**
      *  ref used to get scroll top position of 
      *  scrollable-yth widget (div)
-     */
+    */
     const ref = useRef(null);
     const element = ref.current; // null on first render
     let prevScroll = element?.scrollTop; 
@@ -97,15 +97,8 @@ export default function Widget(props){
       }
 
     return (
-        /**
-         * widgetCover : holds the widget flex-centered. 
-         *      currently taking 50% width and 100% height
-         *      of its parent container (widgetholder).
-         */
-        <div className={styles.widgetCover}>
-            {/* 
-                actualWidget : the real colored widget.
-            */}
+        
+           
             <motion.div 
                 ref={ref}
                 className={styles.actualWidget}
@@ -114,7 +107,7 @@ export default function Widget(props){
                     scrollBehavior: "smooth", 
                     background: color,  
                 }}
-
+               
                 variants={widgetVar}
                 animate={isOpen ? "open" : "closed"}
                 transition={{ type: "spring", duration: .5}}
@@ -127,6 +120,5 @@ export default function Widget(props){
                 {children}
 
             </motion.div>
-        </div>
     )
 }

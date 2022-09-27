@@ -1,5 +1,6 @@
 import {motion, AnimatePresence} from "framer-motion"
 import Widget from "../components/Widget"
+import WidgetCover from "../components/WidgetCover";
 import {useState, useEffect} from "react"
 
 
@@ -22,6 +23,7 @@ export default function Localizacion({toggleNav}){
 
 
     return (
+        <WidgetCover>
         <Widget 
             height={150} 
             width={180} 
@@ -57,5 +59,6 @@ export default function Localizacion({toggleNav}){
             </AnimatePresence>
             
         </Widget>
+        </WidgetCover>
     )
 }

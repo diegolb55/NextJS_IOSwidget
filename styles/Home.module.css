@@ -43,10 +43,9 @@
 
 /* Widget stuff */
 .widgetCover{
-  border: 2px solid red;
+  border: 5px solid red;
   height: 100%;
   width: 50%;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,12 +56,12 @@
   
 } */
 
-/* .actualWidget::-webkit-scrollbar{
+.actualWidget::-webkit-scrollbar{
   width: 10px; 
   background: red; 
   display: none;
 
-} */
+}
 
 .widgetTitle {
   width: fit-content;

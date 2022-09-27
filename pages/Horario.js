@@ -1,12 +1,24 @@
 import {motion, AnimatePresence} from "framer-motion"
 import Widget from "../components/Widget"
-import {useState, useEffect} from "react"
-
+import {useState, useEffect, forwardRef} from "react"
+import WidgetCover from "../components/WidgetCover"
 import styles from '../styles/Home.module.css'
 
-export default function Horario({toggleNav}){
+function Horario({ toggleNav, openWidget, controlFlag }, ref){
 
     const [isOpen, setIsOpen] = useState(false);
+    console.log("horario rendered")
+    useEffect(()=>{
+        // setIsOpen(false);
+        if(controlFlag == "true"){
+            setIsOpen(true);
+            
+        }
+        else if(controlFlag == "false"){
+            setIsOpen(false);
+            
+        }
+    }, [controlFlag])
     
     const wTitle = {
         open:{
@@ -20,11 +32,16 @@ export default function Horario({toggleNav}){
             
         },
     }
+
    
     
     return (
+        <WidgetCover 
+        ref={ref}
+        >
 
-        <Widget height={120}
+        <Widget 
+            height={120}
             width={120}
             color="lightblue"
             isOpen={isOpen} 
@@ -33,11 +50,11 @@ export default function Horario({toggleNav}){
         >
             
             <motion.h2 
-               
                 className={styles.widgetTitle}
                 variants={wTitle}
                 animate={isOpen ? "open" : "closed"}
                 transition={{type:"tween", duration:.4}}
+                
             >Horario</motion.h2>
 
             {/* Widget closed content */}
@@ -78,5 +95,10 @@ export default function Horario({toggleNav}){
                 )}
             </AnimatePresence>
         </Widget>
+        </WidgetCover>
+
     )
 }
+
+const forwaredHorario = forwardRef(Horario);
+export default forwaredHorario;
