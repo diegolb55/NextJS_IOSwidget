@@ -23,35 +23,26 @@ export default function Home() {
 
 
   // trying to open widget from navmenu
-  const horario = useRef()
-
-  const [controlFlag, setControlFlag] = useState(horario.current?.getAttribute("flag"));
+  const hRef = useRef()
+  const [hcf, setHCF] = useState("false")
 
   useEffect(()=>{
+    console.log("init hcf")
+    setHCF(hRef.current.getAttribute("flag"));
+  })
 
-    console.log("changed control flag: ", horario.current?.getAttribute("flag"))
 
-  }, [controlFlag])
+
+  
 
 
   const logRef = () => {
 
-    let hf = horario.current?.getAttribute("flag");
-    if(hf == "false"){
-      setControlFlag("true")
-      horario.current.setAttribute("flag", "true")
-      console.log("setted atr: ", horario.current?.getAttribute("flag"))
+    hRef.current.setAttribute("flag", "true")
+    setHCF("true");
+    console.log("setted atr: ", hRef.current?.getAttribute("flag"))
 
-    }
-    else if(hf == "true"){
-      setControlFlag("false")
-      horario.current.setAttribute("flag", "false")
-      console.log("setted atr: ", horario.current?.getAttribute("flag"))
-
-    }
-    
-    console.log("log ref",horario.current?.getAttribute("flag"))
-    
+      
   }
 
 
@@ -80,9 +71,8 @@ export default function Home() {
       {/* Two flex widgetholders */}
       <div className="widgetholder" >
         <Horario 
-           
-          ref={horario} 
-          controlFlag={controlFlag}
+          hcf={hcf}
+          ref={hRef} 
 
           toggleNav={toggleNav} 
           openWidget={openWidget} />

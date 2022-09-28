@@ -4,21 +4,18 @@ import {useState, useEffect, forwardRef} from "react"
 import WidgetCover from "../components/WidgetCover"
 import styles from '../styles/Home.module.css'
 
-function Horario({ toggleNav, openWidget, controlFlag }, ref){
+function Horario({ toggleNav, openWidget, hcf }, ref){
+    console.log("horario rendered")
 
     const [isOpen, setIsOpen] = useState(false);
-    console.log("horario rendered")
     useEffect(()=>{
-        // setIsOpen(false);
-        if(controlFlag == "true"){
-            setIsOpen(true);
-            
+        if(hcf=="true"){
+            setIsOpen(true)
+            console.log(ref.current)
+            ref.current.setAttribute("flag", "false")
         }
-        else if(controlFlag == "false"){
-            setIsOpen(false);
-            
-        }
-    }, [controlFlag])
+    }, [hcf])
+ 
     
     const wTitle = {
         open:{
