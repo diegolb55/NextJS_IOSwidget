@@ -4,10 +4,14 @@ import {useState, useEffect, forwardRef} from "react"
 import WidgetCover from "../components/WidgetCover"
 import styles from '../styles/Home.module.css'
 
-function Horario({ toggleNav, openWidget, hcf }, ref){
+function Horario({ setIsOpenNav, openWidget, hcf }, ref){
+
     console.log("horario rendered")
 
     const [isOpen, setIsOpen] = useState(false);
+
+    const [, forceRender] = useState(Date.now())
+
     useEffect(()=>{
         if(hcf=="true"){
             setIsOpen(true)
@@ -43,7 +47,7 @@ function Horario({ toggleNav, openWidget, hcf }, ref){
             color="lightblue"
             isOpen={isOpen} 
             toggleOpen={ () => setIsOpen(!isOpen) }
-            toggleNav={toggleNav}
+            setIsOpenNav={setIsOpenNav}
         >
             
             <motion.h2 

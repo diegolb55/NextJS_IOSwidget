@@ -11,9 +11,8 @@ export default function Home() {
 
 
   const [openNav, setIsOpenNav] = useState(true);
-  const toggleNav = (b) => {
-    setIsOpenNav(b);
-  }
+
+  
 
   const [openWidget, setOpenWidget] = useState(true); // dont matter value
 
@@ -26,21 +25,18 @@ export default function Home() {
   const hRef = useRef()
   const [hcf, setHCF] = useState("false")
 
+ 
+
   useEffect(()=>{
     console.log("init hcf")
     setHCF(hRef.current.getAttribute("flag"));
   })
 
 
-
-  
-
-
   const logRef = () => {
 
-    hRef.current.setAttribute("flag", "true")
+    hRef.current.setAttribute("flag", "true");
     setHCF("true");
-    console.log("setted atr: ", hRef.current?.getAttribute("flag"))
 
       
   }
@@ -55,6 +51,7 @@ export default function Home() {
         openNav={openNav}
         setOpenWidget={setOpenWidget}
         logRef={logRef}
+        
       />
 
       {/* Landing page heading */}
@@ -74,9 +71,9 @@ export default function Home() {
           hcf={hcf}
           ref={hRef} 
 
-          toggleNav={toggleNav} 
+          setIsOpenNav={setIsOpenNav} 
           openWidget={openWidget} />
-        <Localizacion toggleNav={toggleNav}/>
+        <Localizacion setIsOpenNav={setIsOpenNav}/>
       </div>
       {/* <div className="widgetholder">
         <Localizacion toggleNav={toggleNav}/>

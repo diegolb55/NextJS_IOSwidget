@@ -8,9 +8,8 @@ import styles from '../styles/Home.module.css'
 
 
 
-const MenuBar = ({logRef}) => {
+const MenuBar = ({logRef, openMenu, setOpenMenu}) => {
 
-  const [openMenu, setOpenMenu] = useState(false)
   
   // variants that open/close the menu bar
   const menuVariants = {
@@ -23,6 +22,7 @@ const MenuBar = ({logRef}) => {
       right: "-70vw",
     }
   }
+
   // variants that move horizontal of menu burger
   const burgerVariants = {
     open:{
@@ -51,24 +51,32 @@ const MenuBar = ({logRef}) => {
       >
 
         {openMenu ? 
-          <AiOutlineMenuUnfold  onClick={ ()=> setOpenMenu(openMenu => !openMenu) }/> 
+          <AiOutlineMenuUnfold  onClick={ ()=>setOpenMenu(b => !b) }/> 
           : 
-          <AiOutlineMenuFold onClick={ ()=> setOpenMenu(openMenu => !openMenu) }/>
+          <AiOutlineMenuFold onClick={  ()=>setOpenMenu(b => !b) }/>
         }
 
         
 
       </motion.div>
       <h3 style={{
-        marginLeft:100
-      }}
-      onClick={ ()=> logRef() }>horario</h3>
+          marginLeft:100
+        }}
+        onClick={ () => {
+          logRef();
+          setOpenMenu(false);
+        }}>
+          horario
+        </h3>
       
     </motion.div>
   )
 }
 
 export default function NavBar({openNav, setOpenWidget, logRef}){
+
+    const [openMenu, setOpenMenu] = useState(false);
+
 
     const navVariants = {
         open:{top: 0},
@@ -87,7 +95,7 @@ export default function NavBar({openNav, setOpenWidget, logRef}){
           onClick={ () => setOpenWidget(b => !b)}
         ></div>
         
-        <MenuBar logRef={logRef}/>
+        <MenuBar logRef={logRef} openMenu={openMenu} setOpenMenu={setOpenMenu}/>
 
       </motion.div>
     )
