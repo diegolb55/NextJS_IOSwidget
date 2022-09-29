@@ -7,11 +7,6 @@ import { useState, useEffect, forwardRef } from 'react';
 
     const {children} = props;
 
-
-
-
-  
-
     return (
         /**
          * widgetCover : holds the widget flex-centered. 

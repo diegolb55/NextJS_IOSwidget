@@ -4,22 +4,19 @@ import {useState, useEffect, forwardRef} from "react"
 import WidgetCover from "../components/WidgetCover"
 import styles from '../styles/Home.module.css'
 
-function Horario({ setIsOpenNav, openWidget, hcf }, ref){
+function Horario({ setIsOpenNav, openWidget, menuControlRef }, ref){
 
     console.log("horario rendered")
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const [, forceRender] = useState(Date.now())
 
     useEffect(()=>{
-        if(hcf=="true"){
-            setIsOpen(true)
-            console.log(ref.current)
-            ref.current.setAttribute("flag", "false")
+        if(menuControlRef.current.horario){
+            setIsOpen(true);
+            menuControlRef.current.horario = false;
         }
-    }, [hcf])
- 
+    })
     
     const wTitle = {
         open:{

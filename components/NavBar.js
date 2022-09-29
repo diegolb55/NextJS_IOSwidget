@@ -8,7 +8,7 @@ import styles from '../styles/Home.module.css'
 
 
 
-const MenuBar = ({logRef, openMenu, setOpenMenu}) => {
+const MenuBar = ({ openMenu, setOpenMenu, changeflagRef}) => {
 
   
   // variants that open/close the menu bar
@@ -63,17 +63,26 @@ const MenuBar = ({logRef, openMenu, setOpenMenu}) => {
           marginLeft:100
         }}
         onClick={ () => {
-          logRef();
+          changeflagRef("horario");
           setOpenMenu(false);
         }}>
           horario
-        </h3>
+      </h3>
+      <h3 style={{
+          marginLeft:100
+        }}
+        onClick={ () => {
+          changeflagRef("localizacion");
+          setOpenMenu(false);
+        }}>
+          localizacion
+      </h3>
       
     </motion.div>
   )
 }
 
-export default function NavBar({openNav, setOpenWidget, logRef}){
+export default function NavBar({openNav, setOpenWidget, changeflagRef}){
 
     const [openMenu, setOpenMenu] = useState(false);
 
@@ -95,7 +104,7 @@ export default function NavBar({openNav, setOpenWidget, logRef}){
           onClick={ () => setOpenWidget(b => !b)}
         ></div>
         
-        <MenuBar logRef={logRef} openMenu={openMenu} setOpenMenu={setOpenMenu}/>
+        <MenuBar openMenu={openMenu} setOpenMenu={setOpenMenu} changeflagRef={changeflagRef}/>
 
       </motion.div>
     )

@@ -16,37 +16,43 @@ export default function Home() {
 
   const [openWidget, setOpenWidget] = useState(true); // dont matter value
 
+  const [, forceRender] = useState(Date.now())
+
+
 
 
   console.log("index rendered")
 
 
-  // trying to open widget from navmenu
-  const hRef = useRef()
-  const [hcf, setHCF] = useState("false")
+  // component refs to widgetCover of every page:
+  const hRef = useRef();
+  const lRef = useRef();
 
- 
-
-  useEffect(()=>{
-    console.log("init hcf")
-    setHCF(hRef.current.getAttribute("flag"));
+  const menuControlRef = useRef({
+    localizacion: false,
+    horario: false,
   })
-
-
-  const logRef = () => {
-
-    hRef.current.setAttribute("flag", "true");
-    hRef.current.scrollIntoView({behavior: "smooth"});
+  const changeflagRef = (s) => {
+    switch(s){
+      case "localizacion":
+        lRef.current.scrollIntoView({behavior: "smooth"})
+        menuControlRef.current.localizacion = true;
+        break;
+      case "horario":
+        hRef.current.scrollIntoView({behavior: "smooth"});
+        menuControlRef.current.horario = true;
+        break;
+    }
     setTimeout(()=>{
-      setHCF("true");
+      forceRender(Date.now());
     }, 1000)
     
+    console.log("index forced")
 
-      
   }
-
-
  
+
+
 
   return (
     <div className="container">
@@ -54,7 +60,7 @@ export default function Home() {
       <NavBar 
         openNav={openNav}
         setOpenWidget={setOpenWidget}
-        logRef={logRef}
+        changeflagRef={changeflagRef}
         
       />
 
@@ -72,12 +78,17 @@ export default function Home() {
       {/* Two flex widgetholders */}
       <div className="widgetholder" >
         <Horario 
-          hcf={hcf}
           ref={hRef} 
 
           setIsOpenNav={setIsOpenNav} 
-          openWidget={openWidget} />
-        <Localizacion setIsOpenNav={setIsOpenNav}/>
+          openWidget={openWidget}
+          menuControlRef={menuControlRef}
+        />
+        <Localizacion 
+          ref={lRef}
+          setIsOpenNav={setIsOpenNav}
+          menuControlRef={menuControlRef}
+        />
       </div>
       {/* <div className="widgetholder">
         <Localizacion toggleNav={toggleNav}/>
