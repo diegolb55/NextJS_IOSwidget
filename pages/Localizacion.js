@@ -1,13 +1,19 @@
 import {motion, AnimatePresence} from "framer-motion"
 import Widget from "../components/Widget"
 import WidgetCover from "../components/WidgetCover";
-import {useState, useEffect} from "react"
+import {useState, useEffect, forwardRef} from "react"
 
 
-export default function Localizacion({setIsOpenNav}){
-
+function Localizacion({setIsOpenNav, menuControlRef}, ref){
 
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(()=>{
+        if(menuControlRef.current.localizacion){
+            setIsOpen(true);
+            menuControlRef.current.localizacion = false;
+        }
+    })
 
     const wTitle = {
         open:{
@@ -24,7 +30,7 @@ export default function Localizacion({setIsOpenNav}){
 
 
     return (
-        <WidgetCover>
+        <WidgetCover ref={ref}>
         <Widget 
             height={150} 
             width={180} 
@@ -63,3 +69,6 @@ export default function Localizacion({setIsOpenNav}){
         </WidgetCover>
     )
 }
+
+const forwadedLocalizacion = forwardRef(Localizacion);
+export default forwadedLocalizacion;
