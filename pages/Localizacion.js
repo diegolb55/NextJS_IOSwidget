@@ -4,7 +4,8 @@ import WidgetCover from "../components/WidgetCover";
 import {useState, useEffect} from "react"
 
 
-export default function Localizacion({toggleNav}){
+export default function Localizacion({setIsOpenNav}){
+
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -29,7 +30,7 @@ export default function Localizacion({toggleNav}){
             width={180} 
             isOpen={isOpen} 
             toggleOpen={ () => setIsOpen(!isOpen)} 
-            toggleNav={toggleNav}
+            setIsOpenNav={setIsOpenNav}
             color="lightgray">
 
             <motion.h2 

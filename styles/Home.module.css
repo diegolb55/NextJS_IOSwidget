@@ -43,7 +43,7 @@
 
 /* Widget stuff */
 .widgetCover{
-  border: 5px solid red;
+  /* border: 5px solid red; */
   height: 100%;
   width: 50%;
   display: flex;

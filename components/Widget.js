@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 
 export default function Widget(props){
 
-    const {height, width, isOpen, color, toggleOpen, toggleNav, children} = props;
+    const {height, width, isOpen, color, toggleOpen, setIsOpenNav, children} = props;
 
     /**
      *  ref used to get scroll top position of 
@@ -25,12 +25,12 @@ export default function Widget(props){
 
         if( deltaY < -6) {  // scrolling up
             // show nav
-            toggleNav(true);
+            setIsOpenNav(true);
             
         }
         else if(deltaY > 6){ // scrolling down 
             // hide nav
-            toggleNav(false);
+            setIsOpenNav(false);
             
         }
 
@@ -113,7 +113,7 @@ export default function Widget(props){
                 transition={{ type: "spring", duration: .5}}
                 onClick={ () => {
                     toggleOpen();
-                    toggleNav(true);
+                    setIsOpenNav(true);
                 } }
                 
             >
