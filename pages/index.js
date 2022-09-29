@@ -36,7 +36,11 @@ export default function Home() {
   const logRef = () => {
 
     hRef.current.setAttribute("flag", "true");
-    setHCF("true");
+    hRef.current.scrollIntoView({behavior: "smooth"});
+    setTimeout(()=>{
+      setHCF("true");
+    }, 1000)
+    
 
       
   }
