@@ -48,7 +48,6 @@ function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
             color="lightblue"
             isOpen={isOpen} 
             toggleOpen={ () => {
-                // changeflagRef("horario")
                 setIsOpen(true);
                 changeflagRef("horario")
             }}

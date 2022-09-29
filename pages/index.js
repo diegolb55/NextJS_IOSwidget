@@ -13,9 +13,6 @@ export default function Home() {
   const [openNav, setIsOpenNav] = useState(true);
 
   
-
-  const [openWidget, setOpenWidget] = useState(true); // dont matter value
-
   /**
    * Calling forceRender triggers useState's re-render. 
    */
@@ -61,6 +58,11 @@ export default function Home() {
 
     forceRender(Date.now());
 
+    setTimeout(()=>{
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 250)
+
+
     
   }
  
@@ -69,11 +71,9 @@ export default function Home() {
 
   return (
     <div className="container">
-
       <NavBar 
         closeAllPages={closeAllPages}
         openNav={openNav}
-        setOpenWidget={setOpenWidget}
         changeflagRef={changeflagRef}
         
       />
@@ -82,12 +82,10 @@ export default function Home() {
       <h1 style={{margin: "100px 0 0", textAlign:"center"}}>Home Page</h1>
 
       {/* black rectangle */}
-      <div 
-        style={{ height: 1000, width: "70vw",
-          margin:"20px auto", background:"#414a4c",
-          boxShadow:"inset 5px 0px 12px 2px black"
-        }}
-      ></div>
+      <div className="brect"></div>
+      <div className="brect"></div>
+      <div className="brect"></div>
+      <div className="brect"></div>
 
       {/* Two flex widgetholders */}
       <div className="widgetholder" >
