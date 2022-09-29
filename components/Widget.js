@@ -110,7 +110,7 @@ export default function Widget(props){
                
                 variants={widgetVar}
                 animate={isOpen ? "open" : "closed"}
-                transition={{ type: "spring", duration: .5}}
+                transition={{ type: "tween", duration: .3}}
                 onClick={ () => {
                     toggleOpen();
                     setIsOpenNav(true);

@@ -41,6 +41,13 @@ body::-webkit-scrollbar {
 .container{
   scroll-behavior:smooth;
 }
+.brect{
+  height: 200px;
+  width: 70vw;
+  margin: 20px auto;
+  background: #414a4c;
+  box-shadow: inset 5px 0 12px 0 black;
+}
 
 
 /* widget */

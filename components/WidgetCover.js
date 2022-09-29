@@ -13,7 +13,7 @@ import { useState, useEffect, forwardRef } from 'react';
          *      currently taking 50% width and 100% height
          *      of its parent container (widgetholder).
          */
-        <div ref={ref} className={styles.widgetCover} flag="false">
+        <div ref={ref} className={styles.widgetCover}>
 
             { children }
 

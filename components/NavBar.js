@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, forwardRef } from 'react'
 
 import {AiOutlineMenuUnfold} from 'react-icons/ai'
 import {AiOutlineMenuFold} from 'react-icons/ai'
@@ -82,7 +82,7 @@ const MenuBar = ({ openMenu, setOpenMenu, changeflagRef}) => {
   )
 }
 
-export default function NavBar({openNav, setOpenWidget, changeflagRef}){
+export default function NavBar({openNav, changeflagRef, closeAllPages}){
 
     const [openMenu, setOpenMenu] = useState(false);
 
@@ -101,7 +101,7 @@ export default function NavBar({openNav, setOpenWidget, changeflagRef}){
         
       >
         <div className={styles.logo}
-          onClick={ () => setOpenWidget(b => !b)}
+          onClick={ () => closeAllPages()}
         ></div>
         
         <MenuBar openMenu={openMenu} setOpenMenu={setOpenMenu} changeflagRef={changeflagRef}/>
@@ -109,3 +109,4 @@ export default function NavBar({openNav, setOpenWidget, changeflagRef}){
       </motion.div>
     )
 }
+

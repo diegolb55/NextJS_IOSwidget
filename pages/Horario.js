@@ -4,17 +4,22 @@ import {useState, useEffect, forwardRef} from "react"
 import WidgetCover from "../components/WidgetCover"
 import styles from '../styles/Home.module.css'
 
-function Horario({ setIsOpenNav, openWidget, menuControlRef }, ref){
+function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
 
     console.log("horario rendered")
 
     const [isOpen, setIsOpen] = useState(false);
 
-
+    
     useEffect(()=>{
         if(menuControlRef.current.horario){
             setIsOpen(true);
-            menuControlRef.current.horario = false;
+            // console.log(menuControlRef.current.horario)
+            // menuControlRef.current.horario = false;
+        }
+        else {
+            setIsOpen(false);
+            // menuControlRef.current.horario = true;
         }
     })
     
@@ -31,11 +36,10 @@ function Horario({ setIsOpenNav, openWidget, menuControlRef }, ref){
         },
     }
 
-   
     
     return (
         <WidgetCover 
-        ref={ref}
+            ref={ref}
         >
 
         <Widget 
@@ -43,7 +47,11 @@ function Horario({ setIsOpenNav, openWidget, menuControlRef }, ref){
             width={120}
             color="lightblue"
             isOpen={isOpen} 
-            toggleOpen={ () => setIsOpen(!isOpen) }
+            toggleOpen={ () => {
+                setIsOpen(true);
+                changeflagRef("horario")
+            }}
+
             setIsOpenNav={setIsOpenNav}
         >
             
