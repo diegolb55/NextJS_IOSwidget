@@ -16,12 +16,10 @@ export default function Home() {
 
   const [openWidget, setOpenWidget] = useState(true); // dont matter value
 
+  /**
+   * Calling forceRender triggers useState's re-render. 
+   */
   const [, forceRender] = useState(Date.now())
-
-
-
-
-  console.log("index rendered")
 
 
   // component refs to widgetCover of every page:
@@ -34,21 +32,36 @@ export default function Home() {
   })
   const changeflagRef = (s) => {
     switch(s){
-      case "localizacion":
-        lRef.current.scrollIntoView({behavior: "smooth"})
-        menuControlRef.current.localizacion = true;
-        break;
       case "horario":
         hRef.current.scrollIntoView({behavior: "smooth"});
         menuControlRef.current.horario = true;
         break;
-    }
+      case "localizacion":
+        lRef.current.scrollIntoView({behavior: "smooth"})
+        menuControlRef.current.localizacion = true;
+        break;
+      
+    };
+
+    /**
+     * Rendering index and widget pages again, so that 
+     * the pages evaluate the updated ref value and change accordingly. 
+     */
     setTimeout(()=>{
       forceRender(Date.now());
-    }, 1000)
+    }, 500)
     
-    console.log("index forced")
+  }
+  const closeAllPages = () => {
+    console.log("menuControlRef", menuControlRef.current);
+    for (let page in menuControlRef.current){
+      console.log(page,menuControlRef.current[page]  )
+      menuControlRef.current[page] = false;
+    }
 
+    forceRender(Date.now());
+
+    
   }
  
 
@@ -58,6 +71,7 @@ export default function Home() {
     <div className="container">
 
       <NavBar 
+        closeAllPages={closeAllPages}
         openNav={openNav}
         setOpenWidget={setOpenWidget}
         changeflagRef={changeflagRef}
@@ -81,13 +95,14 @@ export default function Home() {
           ref={hRef} 
 
           setIsOpenNav={setIsOpenNav} 
-          openWidget={openWidget}
           menuControlRef={menuControlRef}
+          changeflagRef={changeflagRef}
         />
         <Localizacion 
           ref={lRef}
           setIsOpenNav={setIsOpenNav}
           menuControlRef={menuControlRef}
+          changeflagRef={changeflagRef}
         />
       </div>
       {/* <div className="widgetholder">

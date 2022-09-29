@@ -82,7 +82,7 @@ const MenuBar = ({ openMenu, setOpenMenu, changeflagRef}) => {
   )
 }
 
-export default function NavBar({openNav, setOpenWidget, changeflagRef}){
+export default function NavBar({openNav, setOpenWidget, changeflagRef, closeAllPages}){
 
     const [openMenu, setOpenMenu] = useState(false);
 
@@ -101,7 +101,7 @@ export default function NavBar({openNav, setOpenWidget, changeflagRef}){
         
       >
         <div className={styles.logo}
-          onClick={ () => setOpenWidget(b => !b)}
+          onClick={ () => closeAllPages()}
         ></div>
         
         <MenuBar openMenu={openMenu} setOpenMenu={setOpenMenu} changeflagRef={changeflagRef}/>

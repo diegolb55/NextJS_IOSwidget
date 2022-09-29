@@ -4,14 +4,19 @@ import WidgetCover from "../components/WidgetCover";
 import {useState, useEffect, forwardRef} from "react"
 
 
-function Localizacion({setIsOpenNav, menuControlRef}, ref){
+function Localizacion({setIsOpenNav, menuControlRef, changeflagRef}, ref){
 
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(()=>{
         if(menuControlRef.current.localizacion){
             setIsOpen(true);
-            menuControlRef.current.localizacion = false;
+            // console.log(menuControlRef.current.horario)
+            // menuControlRef.current.horario = false;
+        }
+        else {
+            setIsOpen(false);
+            // menuControlRef.current.horario = true;
         }
     })
 
@@ -35,7 +40,10 @@ function Localizacion({setIsOpenNav, menuControlRef}, ref){
             height={150} 
             width={180} 
             isOpen={isOpen} 
-            toggleOpen={ () => setIsOpen(!isOpen)} 
+            toggleOpen={ () => {
+                setIsOpen(true);
+                changeflagRef("localizacion");
+            }} 
             setIsOpenNav={setIsOpenNav}
             color="lightgray">
 
