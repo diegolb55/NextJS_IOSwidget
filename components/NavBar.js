@@ -59,24 +59,30 @@ const MenuBar = ({ openMenu, setOpenMenu, changeflagRef}) => {
         
 
       </motion.div>
-      <h3 style={{
-          marginLeft:100
-        }}
-        onClick={ () => {
-          changeflagRef("horario");
-          setOpenMenu(false);
-        }}>
-          horario
-      </h3>
-      <h3 style={{
-          marginLeft:100
-        }}
-        onClick={ () => {
-          changeflagRef("localizacion");
-          setOpenMenu(false);
-        }}>
-          localizacion
-      </h3>
+      <div className={styles.pagelinks}>
+        <h3
+          onClick={ () => {
+            changeflagRef("home");
+            setOpenMenu(false);
+          }}>
+            home
+        </h3>
+        <h3 
+          onClick={ () => {
+            changeflagRef("horario");
+            setOpenMenu(false);
+          }}>
+            horario
+        </h3>
+        <h3 
+          onClick={ () => {
+            changeflagRef("localizacion");
+            setOpenMenu(false);
+          }}>
+            localizacion
+        </h3>
+      </div>
+      
       
     </motion.div>
   )

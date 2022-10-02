@@ -27,8 +27,16 @@ export default function Home() {
     localizacion: false,
     horario: false,
   })
+  /**
+   * 
+   * @param {string} s
+   *  
+   */
   const changeflagRef = (s) => {
     switch(s){
+      case "home":
+        closeAllPages();
+        break
       case "horario":
         hRef.current.scrollIntoView({behavior: "smooth"});
         menuControlRef.current.horario = true;

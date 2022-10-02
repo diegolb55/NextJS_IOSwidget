@@ -3,6 +3,10 @@ import Widget from "../components/Widget"
 import {useState, useEffect, forwardRef} from "react"
 import WidgetCover from "../components/WidgetCover"
 import styles from '../styles/Home.module.css'
+import hstyles from '../styles/Horario.module.css'
+import {FiClock} from 'react-icons/fi'
+import ClosedContent from "../components/ClosedContent"
+import OpenContent from "../components/OpenContent"
 
 function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
 
@@ -23,18 +27,6 @@ function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
         }
     })
     
-    const wTitle = {
-        open:{
-            margin:"150px auto 30px auto ",
-            padding: 0,
-
-        },
-        closed:{
-            margin: "0 0 0 0",
-            padding:"0 0 0 20px",
-            
-        },
-    }
 
     
     return (
@@ -45,61 +37,58 @@ function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
         <Widget 
             height={120}
             width={120}
-            color="lightblue"
             isOpen={isOpen} 
+            setIsOpenNav={setIsOpenNav}
             toggleOpen={ () => {
                 setIsOpen(true);
                 changeflagRef("horario")
             }}
+            style={{ 
+                scrollBehavior: "smooth", 
+                background: "white", 
+                boxShadow: "2px 2px 20px 2px #72C491" 
+            }}
 
-            setIsOpenNav={setIsOpenNav}
         >
             
-            <motion.h2 
-                className={styles.widgetTitle}
-                variants={wTitle}
-                animate={isOpen ? "open" : "closed"}
-                transition={{type:"tween", duration:.4}}
-                
-            >Horario</motion.h2>
-
             {/* Widget closed content */}
-            <AnimatePresence>
-                {!isOpen && (
-                    <motion.div 
-                        
-                    className={styles.closedContent1}
-                    initial={{ opacity: 0}}
-                    animate={{ opacity: 1}}
-                    exit={{opacity:0}}
-                    transition={{duration:.2}}
-                    
-                >
-                    <p>Closed Content 1</p>
-                </motion.div>
-                )}
-            </AnimatePresence>
+            <ClosedContent isOpen={isOpen} 
+                style={{
+                    // background: "red",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection:"column"
+                }}>
+                <div className={hstyles.wheading}>
+                        <FiClock className={hstyles.clock}/>
+                        <p>abierto, Manati</p>
+                </div>
+                <p className={hstyles.info}>Lunes: 9:00AM - 4:00PM</p>
+            </ClosedContent>
 
             
             {/* Widget open content */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div 
-                        
-                        className={styles.widgetPageContent}
-                        initial={{ opacity: 0}}
-                        animate={{ opacity: 1}}
-                        exit={{opacity:0}}
-                        onClick={(e) => {
-                            e.stopPropagation()
-                        }}
-                    >
-                        <div style={{
-                            background: "pink", height: 200,
-                        }}></div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <OpenContent isOpen={isOpen}
+                style={{
+                    background:"coral",
+                    // height: "200vh",
+                }}
+                
+            >
+                <div style={{
+                    background: "pink", height: 400,
+                }}>
+                    <h2>Horario Page</h2>
+                </div>
+                <div className={hstyles.gradientbox}>
+                    <div className={hstyles.horariobox}>
+                    
+                    </div>
+                </div>
+            </OpenContent>
+           
+                       
+                    
         </Widget>
         </WidgetCover>
 
