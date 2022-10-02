@@ -1,0 +1,41 @@
+
+
+
+.wheading{
+    background: #435457;
+    border-radius: 20px 20px 0 0;
+    flex-grow: .4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.wheading p {
+    /* background: yellowgreen; */
+    font-size: .6rem;
+}
+.clock{
+    font-size: 2rem;
+}
+.info{
+    /* flex-grow: .2; */
+    /* border: 2px solid gold; */
+    text-align: center;
+    font-size: .8rem;
+    margin: 10px 0 0;
+
+}
+
+.gradientbox {
+    border: 3px solid blue;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.horariobox{
+    background: white;
+    height: 600px;
+    width: 70vw;
+}

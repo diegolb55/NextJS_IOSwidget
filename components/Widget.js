@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 
 export default function Widget(props){
 
-    const {height, width, isOpen, color, toggleOpen, setIsOpenNav, children} = props;
+    const {height, width, color, style, isOpen, toggleOpen, setIsOpenNav, children} = props;
 
     /**
      *  ref used to get scroll top position of 
@@ -91,7 +91,8 @@ export default function Widget(props){
             left: "auto",
             zIndex:  1, 
             borderRadius: 25,
-            overflow: "hidden",             
+            overflow: "hidden",   
+            padding: 5          
         },
         
       }
@@ -103,10 +104,7 @@ export default function Widget(props){
                 ref={ref}
                 className={styles.actualWidget}
 
-                style={{ 
-                    scrollBehavior: "smooth", 
-                    background: color,  
-                }}
+                style={style}
                
                 variants={widgetVar}
                 animate={isOpen ? "open" : "closed"}
