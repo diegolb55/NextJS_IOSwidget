@@ -55,7 +55,8 @@ function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
             <ClosedContent isOpen={isOpen} 
                 style={{
                     // background: "red",
-                    height: "100%",
+                    margin: 5,
+                    height: "90%",
                     display: "flex",
                     flexDirection:"column"
                 }}>
