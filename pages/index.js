@@ -91,7 +91,17 @@ export default function Home() {
 
       {/* black rectangle */}
       <div className="brect"></div>
-      <div className="brect"></div>
+      <div className="binfo">
+        <p>
+          Created website widgets such as the app widgets on Iphone.
+          Using Next.js and framer motion to handle the animations.<br/><br/>
+          First, there is a WidgetCover function component to hold onto position the actual Widget component.
+          Without the WidgetCover the Widget's scale change can alter other surrounding components.<br/><br/>
+          The widgets have two content components: ClosedContent and OpenContent. 
+          These components evaluate a boolean prop to decide or not to render its children content.
+
+        </p>
+      </div>
       <div className="brect"></div>
       <div className="brect"></div>
 

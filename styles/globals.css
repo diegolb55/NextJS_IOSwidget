@@ -49,6 +49,11 @@ body::-webkit-scrollbar {
   background: #414a4c;
   box-shadow: inset 5px 0 12px 0 black;
 }
+.binfo{
+  width: 70vw;
+  margin: 50px auto;
+  
+}
 
 
 /* widget */

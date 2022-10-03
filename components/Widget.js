@@ -92,7 +92,6 @@ export default function Widget(props){
             zIndex:  1, 
             borderRadius: 25,
             overflow: "hidden",   
-            padding: 5          
         },
         
       }
