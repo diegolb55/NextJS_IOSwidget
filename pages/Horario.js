@@ -70,21 +70,22 @@ function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
             {/* Widget open content */}
             <OpenContent isOpen={isOpen}
                 style={{
-                    background:"coral",
-                    // height: "200vh",
+                    // background:"white",
+                    position:"relative"
                 }}
                 
             >
-                <div style={{
-                    background: "pink", height: 400,
-                }}>
-                    <h2>Horario Page</h2>
-                </div>
+                 <div className={hstyles.imgtobe}></div>
+
+
                 <div className={hstyles.gradientbox}>
+
+                    <h2>Horas de Oficina</h2>
                     <div className={hstyles.horariobox}>
                     
                     </div>
                 </div>
+
             </OpenContent>
            
                        
