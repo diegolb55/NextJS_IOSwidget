@@ -10,7 +10,7 @@ export default function Widget(props){
 
     /**
      *  ref used to get scroll top position of 
-     *  scrollable-yth widget (div)
+     *  scrollable-yth widget (div) to hide nav accordingly.
     */
     const ref = useRef(null);
     const element = ref.current; // null on first render

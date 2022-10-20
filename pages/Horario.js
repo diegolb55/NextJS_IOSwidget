@@ -8,9 +8,8 @@ import {FiClock} from 'react-icons/fi'
 import ClosedContent from "../components/ClosedContent"
 import OpenContent from "../components/OpenContent"
 
-function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
+function Horario({ setIsOpenNav, menuControlRef, changeRefValue }, ref){
 
-    console.log("horario rendered")
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -18,12 +17,10 @@ function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
     useEffect(()=>{
         if(menuControlRef.current.horario){
             setIsOpen(true);
-            // console.log(menuControlRef.current.horario)
-            // menuControlRef.current.horario = false;
+            
         }
         else {
             setIsOpen(false);
-            // menuControlRef.current.horario = true;
         }
     })
     
@@ -41,7 +38,7 @@ function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
             setIsOpenNav={setIsOpenNav}
             toggleOpen={ () => {
                 setIsOpen(true);
-                changeflagRef("horario")
+                changeRefValue("horario")
             }}
             style={{ 
                 scrollBehavior: "smooth", 
@@ -64,7 +61,7 @@ function Horario({ setIsOpenNav, menuControlRef, changeflagRef }, ref){
                         <FiClock className={hstyles.clock}/>
                         <p>abierto, Manati</p>
                 </div>
-                <p className={hstyles.info}>Lunes: 9:00AM - 4:00PM</p>
+                <p className={hstyles.info}>Lunes: <br/> 9:00AM - 4:00PM</p>
             </ClosedContent>
 
             
