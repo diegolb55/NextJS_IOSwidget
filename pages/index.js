@@ -26,17 +26,20 @@ export default function Home() {
   const menuControlRef = useRef({
     localizacion: false,
     horario: false,
-  })
+  });
   /**
    * 
    * @param {string} s
    *  
    */
-  const changeflagRef = (s) => {
+  const changeRefValue = (s) => {
+    
+    closeAllPages();
+
     switch(s){
       case "home":
-        closeAllPages();
-        break
+        goHome();
+        break;
       case "horario":
         hRef.current.scrollIntoView({behavior: "smooth"});
         menuControlRef.current.horario = true;
@@ -57,22 +60,21 @@ export default function Home() {
     }, 500)
     
   }
+  
   const closeAllPages = () => {
-    console.log("menuControlRef", menuControlRef.current);
     for (let page in menuControlRef.current){
-      console.log(page,menuControlRef.current[page]  )
       menuControlRef.current[page] = false;
     }
+  }
 
-    forceRender(Date.now());
-
+  const goHome = () => {
+    closeAllPages();
     setTimeout(()=>{
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 250)
-
-
-    
+    }, 250);
+    forceRender(Date.now())
   }
+
  
 
 
@@ -80,9 +82,9 @@ export default function Home() {
   return (
     <div className="container">
       <NavBar 
-        closeAllPages={closeAllPages}
+        goHome={goHome}
         openNav={openNav}
-        changeflagRef={changeflagRef}
+        changeRefValue={changeRefValue}
         
       />
 
@@ -112,20 +114,16 @@ export default function Home() {
 
           setIsOpenNav={setIsOpenNav} 
           menuControlRef={menuControlRef}
-          changeflagRef={changeflagRef}
+          changeRefValue={changeRefValue}
         />
         <Localizacion 
           ref={lRef}
           setIsOpenNav={setIsOpenNav}
           menuControlRef={menuControlRef}
-          changeflagRef={changeflagRef}
+          changeRefValue={changeRefValue}
         />
       </div>
-      {/* <div className="widgetholder">
-        <Localizacion toggleNav={toggleNav}/>
-        <Horario toggleNav={toggleNav} openWidget={openWidget}/>
-
-      </div> */}
+     
 
     </div>
   )

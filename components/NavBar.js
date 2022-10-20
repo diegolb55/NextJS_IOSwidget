@@ -8,7 +8,7 @@ import styles from '../styles/Home.module.css'
 
 
 
-const MenuBar = ({ openMenu, setOpenMenu, changeflagRef}) => {
+const MenuBar = ({ openMenu, setOpenMenu, changeRefValue}) => {
 
   
   // variants that open/close the menu bar
@@ -62,21 +62,21 @@ const MenuBar = ({ openMenu, setOpenMenu, changeflagRef}) => {
       <div className={styles.pagelinks}>
         <h3
           onClick={ () => {
-            changeflagRef("home");
+            changeRefValue("home");
             setOpenMenu(false);
           }}>
             home
         </h3>
         <h3 
           onClick={ () => {
-            changeflagRef("horario");
+            changeRefValue("horario");
             setOpenMenu(false);
           }}>
             horario
         </h3>
         <h3 
           onClick={ () => {
-            changeflagRef("localizacion");
+            changeRefValue("localizacion");
             setOpenMenu(false);
           }}>
             localizacion
@@ -88,7 +88,7 @@ const MenuBar = ({ openMenu, setOpenMenu, changeflagRef}) => {
   )
 }
 
-export default function NavBar({openNav, changeflagRef, closeAllPages}){
+export default function NavBar({openNav, changeRefValue, goHome}){
 
     const [openMenu, setOpenMenu] = useState(false);
 
@@ -107,10 +107,10 @@ export default function NavBar({openNav, changeflagRef, closeAllPages}){
         
       >
         <div className={styles.logo}
-          onClick={ () => closeAllPages()}
+          onClick={ () => goHome()}
         ></div>
         
-        <MenuBar openMenu={openMenu} setOpenMenu={setOpenMenu} changeflagRef={changeflagRef}/>
+        <MenuBar openMenu={openMenu} setOpenMenu={setOpenMenu} changeRefValue={changeRefValue}/>
 
       </motion.div>
     )

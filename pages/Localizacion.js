@@ -5,7 +5,7 @@ import {useState, useEffect, forwardRef} from "react"
 import OpenContent from "../components/OpenContent";
 import ClosedContent from "../components/ClosedContent";
 
-function Localizacion({setIsOpenNav, menuControlRef, changeflagRef}, ref){
+function Localizacion({setIsOpenNav, menuControlRef, changeRefValue}, ref){
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -32,7 +32,7 @@ function Localizacion({setIsOpenNav, menuControlRef, changeflagRef}, ref){
             isOpen={isOpen} 
             toggleOpen={ () => {
                 setIsOpen(true);
-                changeflagRef("localizacion");
+                changeRefValue("localizacion");
             }} 
             setIsOpenNav={setIsOpenNav}
             style={{ 
